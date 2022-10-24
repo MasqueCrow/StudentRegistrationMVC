@@ -10,13 +10,14 @@ Developed Student Registration portal for an assignment to learn full-stack Java
 5. Simple form validation 
 
 ### Setup
-To get started with the app, make sure you have Java JKD, MySql and Git installed on your machine
-Clone the repo to your machine:
+To get started with the app, make sure you have Java JDK, mySql, MySQL Workbench and Git installed on your machine
+
+Clone this repo to your machine:
+```
 $ gh repo clone MasqueCrow/StudentRegistrationMVC
+```
 
- and navigate to src/main/resources and 
-
-Then, create a new database schema in mySql Workbench and with the following tables:
+Then, create a new database schema in mySql Workbench with the following tables:
 
 **Student**
 
@@ -35,6 +36,9 @@ Then, create a new database schema in mySql Workbench and with the following tab
 | username  | varchar(45)  | no    | 
 | password  | varchar(45)  | no    |
 
-Next, copy/paste the sql queries in [db.sql](/src/main/resources/db.sql) to insert records
+Next, copy/paste the sql queries in [db.sql](/src/main/resources/db.sql) to insert records to both tables
 
-Finally, run the app and open the browser to view the portal at: localhost:8888/student
+Run Java app and open browser to view the application:
+```
+localhost:8888/student
+```
