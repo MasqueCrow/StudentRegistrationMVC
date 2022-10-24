@@ -13,7 +13,7 @@ Developed Student Registration portal for an assignment to learn full-stack Java
 To get started with the app, make sure you have Java JDK, mySql, MySQL Workbench and Git installed on your machine
 
 Clone this repo to your machine:
-```
+```ruby
 $ gh repo clone MasqueCrow/StudentRegistrationMVC
 ```
 
@@ -39,6 +39,6 @@ Then, create a new database schema in mySql Workbench with the following tables:
 Next, copy/paste the sql queries in [db.sql](/src/main/resources/db.sql) to insert records to both tables
 
 Run Java app and open browser to view the application:
-```
+```ruby
 localhost:8888/student
 ```
