@@ -4,7 +4,7 @@ Developed Student Registration portal for an assignment to learn full-stack Java
 
 ### Functionality
 1. Built Student Portal using Spring MVC with Thymeleaf as Java Template to load the View component
-2. CRUD operations on Student Model
+2. CRUD operations on Student model
 3. Auto-complete search bar using Ajax
 4. Include AOP on methods for logging
 5. Simple form validation 
@@ -16,6 +16,9 @@ Clone this repo to your machine:
 ```ruby
 $ git clone https://github.com/MasqueCrow/StudentRegistrationMVC
 ```
+
+Next, force update with Maven on dependecies defined in pom.xml 
+
 
 Then, create a new database schema in mySql Workbench with the following tables:
 
@@ -36,7 +39,7 @@ Then, create a new database schema in mySql Workbench with the following tables:
 | username  | varchar(45)  | no    | 
 | password  | varchar(45)  | no    |
 
-Next, copy/paste the sql queries in [db.sql](/src/main/resources/db.sql) to insert records to both tables
+Copy and Paste SQL queries in [db.sql](/src/main/resources/db.sql) to insert records to both tables
 
 Run Java app and open browser to view the application:
 ```ruby
