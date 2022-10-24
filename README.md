@@ -1,6 +1,6 @@
 # Student Registration
 
-Developed Student Registration portal for an assignment to learn full-stack Java with Spring Boot.
+Developed Student Registration portal for an assignment to learn full-stack Java with Spring Boot
 
 ### Functionality
 1. Built Student Portal using Spring MVC with Thymeleaf as Java Template to load the View component
@@ -14,7 +14,7 @@ To get started with the app, make sure you have Java JDK, mySql, MySQL Workbench
 
 Clone this repo to your machine:
 ```ruby
-$ gh repo clone MasqueCrow/StudentRegistrationMVC
+$ git clone https://github.com/MasqueCrow/StudentRegistrationMVC
 ```
 
 Then, create a new database schema in mySql Workbench with the following tables:
