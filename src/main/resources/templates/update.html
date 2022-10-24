@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous">
+	
+</script>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- custom css stylesheet -->
+<link rel="stylesheet" href="http://localhost:8888/stylesheet/main.css">
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous">
+	
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>	
+	$(document).ready(function() {	
+		//regex to get url parameter value
+		$.urlParam = function (name) {
+		    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
+		    return (results !== null) ? results[1] || 0 : false;
+		} //urlParam
+		
+		//check whether response has been received after update request has been sent
+		if($.urlParam('msg') != false && $.urlParam('status') != false){
+			var msg = $.urlParam('msg');
+			msg = decodeURI(msg);
+			
+			var status = $.urlParam('status');
+			
+			var statusDisplayed = "false" || $.urlParam('statusDisplayed');
+			
+			//display reponse message after record has been updated
+			if(status == "success" && statusDisplayed == "false") {
+				$("#updateMsg").append("<div id='status' class='alert alert-success' role='alert'>" + msg + "</div>");
+				$("#status").fadeOut(7000);
+			} 
+			else if(status == "failed" && statusDisplayed == "false") {
+				$("#updateMsg").append("<div id='status' class='alert alert-danger' role='alert'>" + msg + "</div>");
+				$("#status").fadeOut(7000);
+			}
+			
+			//add parameter to url to check for refresh status
+			var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?statusDisplayed="true"';
+			window.history.pushState({ path: refresh }, '', refresh);
+		}
+		
+	}); //jQuery
+</script>
+
+</head>
+<body>
+	<div class="container row" style="margin-top: 2%;">
+		<!-- Banner fragment-->
+		<div th:replace="fragments/banner"></div>
+		
+		<!--  Breadcrumb -->
+		<div class="col-10 offset-1 mt-3">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="http://localhost:8888/student/home">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Update</li>
+				</ol>
+			</nav>
+		</div>
+		
+		<!--  Update Response -->
+		<div class="col-10 offset-2" id="updateMsg">
+		</div> 
+		
+		<!-- Form Validation Error Message -->
+		<ul class="col-10 offset-2 alert alert-danger" th:if="${#fields.hasErrors('${currStud.*}')}" style="list-style-position: inside;">
+			<li style="padding-left:2%;" th:each="err:${#fields.errors('currStud.*')}" th:text="${err}"></li>
+		</ul>
+		
+		<!-- Update Form -->
+		<div class="col-6 offset-4">
+			<h2 class="display-4"><span th:text="${currStud.name}"></span>'s Details</h2>
+			<form method="post" action="#" th:action="@{'/student/update/' + ${currStud.id}}" th:object="${currStud}">
+				<div class="form-group">
+					<label for="name">Name</label> <span></span>
+					<input type="text" class="form-control"  th:field="*{name}" >
+				</div>
+				<br/>
+				
+				<div class="form-group">
+					<label for="age">Age</label> <span></span>
+					<input type="number" class="form-control" th:field="*{age}" required>
+				</div>
+				<br/>
+
+				<div class="form-group">
+					<label for="mobileNo">MobileNo</label> <span></span>
+					<input type="text" class="form-control" th:field="*{mobileNo}" required>
+				</div>
+				<br/>
+
+				<div class="form-group">
+					<label for="address">Address</label> <span></span>
+					<textarea  rows="5" class="form-control" th:field="*{address}" ></textarea>
+				</div>
+				<br/>
+				
+				<button type="submit" class="btn btn-primary" value='Submit'>Submit</button>
+			</form>
+		</div>
+	</div>
+	
+	<!-- footer fragment -->
+	<div th:insert="fragments/footer" class="container-fluid mt-5" style="background-color: black; width: 100%; height:120px; display: block;">
+	</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous">
+	
+</script>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- custom css stylesheet -->
+<link rel="stylesheet" href="http://localhost:8888/stylesheet/main.css">
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous">
+	
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		//regex to get url parameter value
+		$.urlParam = function (name) {
+		    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+		    			  .exec(window.location.search);
+		    return (results !== null) ? results[1] || 0 : false;
+		} //urlParam
+		
+		var validUser = $.urlParam('validUser');
+		
+		//show user login error msg when user credential fails on server side
+		if(validUser == "false") {
+			$("#invalidMsg").append("<div id='status' class='alert alert-danger' role='alert'>" + "Invalid username and password" + "</div>");
+			$("#status").fadeOut(7000);
+		} //if
+			
+		}); //jQuery
+</script>
+</head>
+
+<body>
+	<div class="container row" style="margin-top: 10%;">
+	<div class="col-10 offset-2" id="invalidMsg"></div>
+ 	<div class="col-6 offset-4">
+ 
+			<h2 class="display-4 text-center" >Student Academy</h2>
+			<br/>
+ 			<form method="post" th:action="@{/student/checkLogin}" th:object="${user}" >
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="username" th:field="*{username}" >
+				</div>
+				
+				<br/>
+
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="password" th:field="*{password}">
+				</div>
+				<br/>
+				
+				<div class="form-group">
+					<button id="loginSubmit" type="submit" class="form-control btn btn-success" value='login'>Login</button>
+				</div>
+				<br/>
+			</form> 
+		</div>
+
+		<!-- footer -->
+		<div class="row navbar fixed-bottom"
+			style="background-color: black; width: 100%; display: block;">
+			<footer class="col-12 mt-3">
+				<p class="h4 footer-content text-left">Student Academy Portal</p>
+				<p class="h5 footer-content text-left text-muted">
+					Proudly developed by <em>JiaWei Tchea</em> <span
+						class="h5 text-muted offset-6 ">Connect with me on Github
+						&nbsp;<i class="fa-brands footer-content fa-github"></i>
+					</span>
+				</p>
+			</footer>
+		</div>
+
+
+	</div>
+	
+
+</body>
+</html>
