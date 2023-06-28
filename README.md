@@ -1,6 +1,6 @@
 # Student Registration
 
-Developed Student Registration portal for an assignment to learn full-stack Java with Spring Boot
+Develop Student Registration portal to learn full-stack Java with Spring Boot
 
 ### Functionality
 1. Built Student Portal using Spring MVC with Thymeleaf as Java Template to load the View component
