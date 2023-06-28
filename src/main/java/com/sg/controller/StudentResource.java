@@ -26,7 +26,7 @@ import com.sg.service.StudentService;
 @Controller
 @RequestMapping("/student")
 public class StudentResource {
-	private final Logger LOG = LoggerFactory.getLogger(StudentResource.class);
+	private final Logger log = LoggerFactory.getLogger(StudentResource.class);
 	private StudentService studService;
 	private UserRepository userRepo;
 	
@@ -34,6 +34,7 @@ public class StudentResource {
 	public StudentResource(StudentService service, UserRepository userRepo ) {
 		this.studService = service;
 		this.userRepo = userRepo;
+		
 	}
 	
 	@GetMapping()
@@ -108,7 +109,7 @@ public class StudentResource {
 		String msg = "";
 		String status ="";
 		
-		System.out.println("BindingResult:" + result);
+		log.debug("BindingResult {}", result);
 		//returns to update form page and display validation message
 		if(result.hasErrors()) {
 			return "update";

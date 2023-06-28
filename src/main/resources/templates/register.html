@@ -17,7 +17,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- custom css stylesheet -->
-<link rel="stylesheet" href="http://localhost:8888/stylesheet/main.css">
+<link rel="stylesheet" href="/stylesheet/main.css">
 <!-- font awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -27,8 +27,6 @@
 	crossorigin="anonymous">
 	
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script>
 	$(document).ready(function() {	
 
@@ -62,6 +60,7 @@
 			window.history.pushState({ path: refresh }, '', refresh);
 		}
 		
+		
 	});
 
 </script>
@@ -76,7 +75,7 @@
 		<div class="col-10 offset-1 mt-3">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="http://localhost:8888/student/home">Home</a></li>
+					<li class="breadcrumb-item"><a href="/student/home">Home</a></li>
 					<li class="breadcrumb-item active">New Student</li>
 				</ol>
 			</nav>
@@ -94,26 +93,26 @@
 		<!-- Register Form -->
 		<div class="col-6 offset-4">
 			<h2 class="display-4">Register Student</h2>
-			<form th:action="@{/student/new}" method="post" action="#" th:object="${student}">
+			<form th:action="@{/student/new}" method="post" action="#" th:object="${student}" id="registerForm">
 			
 				<div class="form-group">
 					<label for="name">Enter Name</label>
-					<input type="text" class="form-control" placeholder="William Ostberg" th:field="*{name}">
+					<input type="text" class="form-control" placeholder="William Ostberg" th:field="*{name}" id="nameInput">
 				</div>
 
 				<div class="form-group">
 					<label for="name">Enter Age</label> 
-					<input type="number" class="form-control" th:field="*{age}" required>
+					<input type="number" class="form-control" placeholder="18" th:field="*{age}" id="ageInput" required>
 				</div>
 
 				<div class="form-group">
 					<label for="name">Enter Mobile no</label> 
-					<input type="text" class="form-control" th:field="*{mobileNo}" required>
+					<input type="text" class="form-control" placeholder="987654311" th:field="*{mobileNo}" id="phoneInput" required>
 				</div>
 
 				<div class="form-group">
 					<label for="address">Enter Address</label>
-					<textarea class="form-control" placeholder="George Town" rows="5" th:field="*{address}"></textarea>
+					<textarea class="form-control" placeholder="George Town" rows="5" th:field="*{address}" id="addressInput"></textarea>
 				</div>
 
 				<br/>

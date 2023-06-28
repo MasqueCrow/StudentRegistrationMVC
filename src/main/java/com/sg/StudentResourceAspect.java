@@ -18,7 +18,7 @@ public class StudentResourceAspect {
 	
 	@Pointcut(value = "execution(* com.sg.controller.StudentResource.*(..))")
 	public void methodLog() {
-		this.LOG.info("Inside StudentResourceAspect methodLog method");
+		LOG.info("Inside StudentResourceAspect");
 	}
 	
 	@Around(value="methodLog()")
@@ -26,12 +26,15 @@ public class StudentResourceAspect {
 		Object ret = null;
 		
 		try {
-			this.LOG.info("Entered method: " + pjp.getSignature().getName());
+			LOG.info("Class Name : {} Entered method: {}", pjp.getSignature().getDeclaringTypeName() ,pjp.getSignature().getName());
+			long startTime = System.currentTimeMillis();
 			ret = pjp.proceed();
-			this.LOG.info("Exited method: " + pjp.getSignature().getName());
+			long endtime = System.currentTimeMillis();
+			LOG.info("Time taken for Execution is : " + (endtime - startTime) +"ms");
+			LOG.info("Exited method:{} ", pjp.getSignature().getName());
 		} //try
 		catch (Throwable e) {
-			this.LOG.info("Exception in around advice");
+			LOG.info("Exception in around advice");
 			throw e;
 		} //catch
 		return ret;

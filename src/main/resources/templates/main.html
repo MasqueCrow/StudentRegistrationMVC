@@ -17,7 +17,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- custom css stylesheet -->
-<link rel="stylesheet" href="http://localhost:8888/stylesheet/main.css">
+<link rel="stylesheet" href="/stylesheet/main.css">
 <!-- font awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -38,7 +38,7 @@
 			var tr = $(this).parent();
 			var id = tr.find("td:first").text();
 			
-			$(this).children().attr("href", "http://localhost:8888/student/update/" + id);
+			$(this).children().attr("href", "http://localhost:8005/student/update/" + id);
 		}); //edit
 		
 		//event handling for delete links
@@ -54,7 +54,7 @@
 			
 			//add href attribute in link to delete student record
 			$('#confirm-delete').click(function() {
-				$(this).find('.btn-ok').attr('href', "http://localhost:8888/student/delete/" + id); 
+				$(this).find('.btn-ok').attr('href', "http://localhost:8005/student/delete/" + id); 
 			}); //confirm-delete
 
 		}); //delete
@@ -163,8 +163,8 @@
 	<!-- Create new student link -->
 	<div class="row">
 		<div class="col-3 offset-10 mt-3">
-			<a href="http://localhost:8888/student/signup" class="btn btn-info" role="button">Add Student</a>
-			<a href="http://localhost:8888/student/signout" class="btn btn-warning" role="button">Logout</a>
+			<a href="/student/signup" class="btn btn-info" role="button">Add Student</a>
+			<a href="/student/signout" class="btn btn-warning" role="button">Logout</a>
 		</div>
 	</div>
 	
