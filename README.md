@@ -35,7 +35,7 @@ To get started with the app, make sure you have Java JDK, mySql, MySQL Workbench
 
 Clone this repo to your machine:
 ```ruby
-$ git clone https://github.com/MasqueCrow/StudentRegistrationMVC
+$ git clone https://github.com/MasqueCrow/StudentRegistrationMVC.git
 ```
 
 Next, install and update Maven dependencies defined in pom.xml 
